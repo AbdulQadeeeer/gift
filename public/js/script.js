@@ -555,10 +555,10 @@ function saveLink(link) {
     if (data.success) {
       console.log(data.message);
     } else {
-      console.error('Failed to save link:', data.message);
+      console.log('Failed to save link:', data.message);
     }
   })
-  .catch(error => console.error('Error:', error));
+  .catch(error => console.log('Error:', error));
 }
 
 
