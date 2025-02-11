@@ -469,7 +469,7 @@ const shareLinkContainer = document.getElementById('share-link-container');
 const shareLinkInput = document.getElementById('share-link');
 const copyLinkButton = document.getElementById('copy-link');
 
-const baseUrl = 'http://localhost:3000';
+const baseUrl = 'https://gift.up.railway.app/';
 
 function getUrlParams() {
   const params = new URLSearchParams(window.location.search);

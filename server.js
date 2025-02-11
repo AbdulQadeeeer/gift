@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-    res.render('index',{title:"Valentine's Day Celebration"});
+    res.render('index', { title: "Valentine's Day Celebration" });
 });
 
 app.post('/save-link', (req, res) => {
@@ -38,7 +38,7 @@ app.post('/save-link', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-    res.render('login',{title:"Login"});
+    res.render('login', { title: "Login" });
 })
 
 app.post('/login', (req, res) => {
@@ -61,11 +61,10 @@ app.post('/login', (req, res) => {
             }
             return false;
         };
-
+        
         if (!passwordMatch()) {
             return res.status(401).json({ success: false, message: 'Invalid credentials' });
-        }
-
+        } 
         // Generate JWT Token
         const token = jwt.sign({ id: user.id, email: user.email }, SECRET_KEY, { expiresIn: '1h' });
 
@@ -81,14 +80,14 @@ app.post('/login', (req, res) => {
     });
 });
 
-app.get('/links',authenticateUser,(req, res) => {
+app.get('/links', authenticateUser, (req, res) => {
     const query = 'SELECT * FROM links';
     db.query(query, (err, results) => {
         if (err) {
             console.error(err);
             return res.json({ success: false, message: 'Database error' });
         }
-        res.render('links',{ title:"Links",success: true, links: results });
+        res.render('links', { title: "Links", success: true, links: results });
     });
 });
 
